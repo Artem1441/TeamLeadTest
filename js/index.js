@@ -4,7 +4,7 @@ $(".scrollToOrder").on("click", function () {
       scrollTop: $(".order").offset().top,
     },
     {
-      duration: 370,
+      duration: 0,
       easing: "linear",
     }
   );
@@ -72,3 +72,6 @@ timer = setInterval(function () {
 
 window.screen.width <= 900 && $(".btn-lg").removeClass("btn-lg");
 window.screen.width <= 600 && $(".btn").addClass("btn-sm");
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
