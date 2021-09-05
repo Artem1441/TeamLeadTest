@@ -1,0 +1,544 @@
+// mixins
+
+@mixin text($size, $weight) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: "Roboto";
+  color: #000;
+}
+
+@mixin arrow($deg, $width) {
+  content: "";
+  height: 3px;
+  width: $width;
+  background: #000;
+  position: absolute;
+  transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -o-transform: rotate($deg);
+}
+
+// const
+
+$borderOrder: 6px solid rgba(0, 0, 0, 0.8);
+$transition: 0.3s;
+
+// fonts
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-Thin.ttf);
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-ThinItalic.ttf);
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-Regular.ttf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-Italic.ttf);
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url(../assets/fonts/Roboto-Black.ttf);
+  font-weight: 900;
+}
+
+// default styles
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+input {
+  min-width: 300px;
+}
+
+.prodImg {
+  transition: $transition;
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transition: $transition;
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition: $transition;
+  }
+}
+
+// promo block
+
+.video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  opacity: 0.05;
+  // opacity of the video
+}
+
+.promo {
+  background: rgba(0, 0, 0, 0.8);
+  //   background promo's block is here
+  color: #f1f1f1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &_title {
+    @include text(36px, bold);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &_info {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &_block {
+      max-width: 400px;
+      z-index: 100;
+    }
+
+    &_descr {
+      &_item {
+        @include text(18px, normal);
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+// composition block
+
+.composition {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(220, 255, 2);
+  background: radial-gradient(
+    circle,
+    rgba(220, 255, 2, 0.38699229691876746) 19%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  //   https://cssgradient.io/ - gradient from this web-site
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_block {
+      max-width: 300px;
+    }
+
+    &_main {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      & button {
+        margin-top: 60px;
+      }
+    }
+
+    &_components {
+      &_item {
+        position: relative;
+        background: rgba(0, 0, 0, 0.1);
+        height: 160px;
+        width: 160px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 50px 0;
+        transition: $transition;
+        -webkit-transition: $transition;
+        -moz-transition: $transition;
+        -ms-transition: $transition;
+        -o-transition: $transition;
+        &img {
+          margin: 30px 0 10px;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          -webkit-transform: scale(1.05);
+          -moz-transform: scale(1.05);
+          -ms-transform: scale(1.05);
+          -o-transform: scale(1.05);
+          transition: $transition;
+          -webkit-transition: $transition;
+          -moz-transition: $transition;
+          -ms-transition: $transition;
+          -o-transition: $transition;
+        }
+      }
+    }
+  }
+}
+
+#composition_container_components_item1:after {
+  @include arrow(30deg, 210px);
+  right: -230px;
+  bottom: 0;
+}
+#composition_container_components_item2:after {
+  @include arrow(0, 200px);
+  right: -210px;
+  bottom: 50%;
+}
+
+#composition_container_components_item3:after {
+  @include arrow(-30deg, 210px);
+  right: -230px;
+  top: 0;
+}
+
+#composition_container_components_item4:after {
+  @include arrow(-30deg, 210px);
+  left: -230px;
+  bottom: 0;
+}
+#composition_container_components_item5:after {
+  @include arrow(0, 180px);
+  left: -210px;
+  bottom: 50%;
+}
+
+#composition_container_components_item6:after {
+  @include arrow(30deg, 210px);
+  left: -230px;
+  top: 0;
+}
+
+// slider block
+
+.slider {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-size: 10px 10px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #b42c0a 0,
+    #b42c0a 1px,
+    #e5e5f7 0,
+    #e5e5f7 50%
+  );
+  //   https://www.magicpattern.design/tools/css-backgrounds - background pattern css generator
+
+  &_block {
+    display: flex;
+    justify-content: space-around;
+
+    &_item {
+      padding: 20px;
+      margin: 0 10px;
+      background: #fff;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      -webkit-border-top-left-radius: 20px;
+      -webkit-border-bottom-right-radius: 20px;
+      -moz-border-radius-topleft: 20px;
+      -moz-border-radius-bottomright: 20px;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+
+      & img {
+        max-width: 300px;
+      }
+
+      &_name {
+        @include text(20px, 700);
+        margin-top: 10px;
+      }
+
+      &_text {
+        @include text(16px, 400);
+        font-style: italic;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  & .slick-next,
+  & .slick-prev {
+    @include text(24px, 700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    bottom: -50px;
+  }
+
+  & .slick-next {
+    left: 70%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+  }
+
+  & .slick-prev {
+    left: 30%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+  }
+}
+
+// promoBottom block
+
+.promoBottom {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(220, 255, 2);
+  background: linear-gradient(
+    339deg,
+    rgba(220, 255, 2, 0.38699229691876746) 19%,
+    rgba(255, 0, 142, 0.19931722689075626) 100%
+  );
+  //   https://cssgradient.io/ - gradient from this web-site
+
+  &_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &_item {
+      max-width: 400px;
+
+      & img {
+        max-width: 400px;
+      }
+
+      & p {
+        @include text(18px, 100);
+        line-height: 180%;
+        font-style: italic;
+      }
+    }
+  }
+
+  &_list {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 40px 20px;
+    border: 10px solid rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    &_item {
+      @include text(24px, 700);
+    }
+  }
+}
+
+// order block
+
+.order {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e5e5f7;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 10px
+    ),
+    repeating-linear-gradient(#444cf755, #444cf7);
+  //   https://www.magicpattern.design/tools/css-backgrounds - background pattern css generator
+
+  &_title {
+    @include text(40px, 700);
+  }
+
+  &_timer {
+    @include text(18px, 400);
+    margin: 15px 0 30px;
+    font-style: italic;
+  }
+
+  &_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &_descr {
+      background: #fff;
+      padding: 10px 30px;
+      border: $borderOrder;
+
+      & img {
+        padding: 15px 30px;
+        max-width: 300px;
+      }
+
+      &_text {
+        max-width: 300px;
+        @include text(14px, 100);
+        font-style: italic;
+      }
+
+      &_price {
+        @include text(32px, 900);
+        text-align: right;
+        margin-top: 20px;
+        padding-right: 20px;
+        position: relative;
+
+        &:before {
+          content: "19.99$";
+          @include text(14px, 400);
+          position: absolute;
+          top: -15px;
+          right: -15px;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: -5px;
+          right: -15px;
+          width: 40px;
+          height: 1px;
+          background: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+
+    &_form {
+      background: #fff;
+      padding: 40px;
+      border: $borderOrder;
+
+      & #exampleInputName::after {
+        content: "Иван";
+      }
+    }
+  }
+}
+
+.inputer {
+  border: 1px solid #ddd;
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 4px;
+  overflow: hidden;
+  & label {
+    position: absolute;
+    top: 40%;
+    left: 5px;
+    opacity: 0;
+    transition: all 0.1s linear;
+    visibility: hidden;
+    font-size: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+
+  & label,
+  & input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+  }
+
+  &.active {
+    & label {
+      opacity: 1;
+      top: 2px;
+      visibility: visible;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    & input {
+      padding: 16px 5px 2px !important;
+    }
+  }
+
+  & input,
+  & input:hover,
+  & input:focus,
+  & input:active {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    padding: 9px 5px;
+    font-size: 12px;
+  }
+}
